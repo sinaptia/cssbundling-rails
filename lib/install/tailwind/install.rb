@@ -10,7 +10,7 @@ case `npx -v`.to_f
 when 7.1...8.0
   run %(npm set-script build:css "#{build_script}")
   run %(yarn build:css)
-when (8.0..)
+when ->(a) { a > 8.0 }
   run %(npm pkg set scripts.build:css="#{build_script}")
   run %(yarn build:css)
 else
